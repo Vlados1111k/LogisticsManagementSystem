@@ -1,3 +1,4 @@
+mermaid{
 classDiagram
     class LogisticsManager {
         -List~Vehicle~ _fleet
@@ -37,3 +38,8 @@ classDiagram
     LogisticsManager --> Vehicle : Керує
     LogisticsManager --> IDeliveryStrategy : Використовує
     InsuranceDecorator o-- IDeliveryStrategy : Обгортає
+
+
+
+
+}
