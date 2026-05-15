@@ -1,5 +1,6 @@
+``` mermaid
     classDiagram
-direction LR
+    direction LR
         class LogisticsManager {
             -List~Vehicle~ _fleet
             -Queue~Cargo~ _warehouse
@@ -38,4 +39,4 @@ direction LR
         LogisticsManager --> Vehicle
         LogisticsManager --> IDeliveryStrategy
         InsuranceDecorator o-- IDeliveryStrategy
-}
+```
