@@ -1,6 +1,7 @@
 ``` mermaid
     classDiagram
     direction LR
+
         class LogisticsManager {
             -List~Vehicle~ _fleet
             -Queue~Cargo~ _warehouse
@@ -8,6 +9,7 @@
             +AddToWarehouse(Cargo cargo)
             +ProcessDeliveries(IDeliveryStrategy strategy)
         }
+
         class Vehicle {
             <<abstract>>
             +String LicensePlate
@@ -15,23 +17,29 @@
             +VehicleStatus Status
             +Drive()*
         }
+
         class Truck {
             +Drive()
         }
+
         class Van {
             +Drive()
         }
+
         class IDeliveryStrategy {
             <<interface>>
             +Calculate(double distance, Cargo cargo)
         }
+
         class StandardDelivery {
             +Calculate()
         }
+
         class InsuranceDecorator {
             -IDeliveryStrategy _innerStrategy
             +Calculate()
         }
+
         Vehicle <|-- Truck
         Vehicle <|-- Van
         IDeliveryStrategy <|.. StandardDelivery
