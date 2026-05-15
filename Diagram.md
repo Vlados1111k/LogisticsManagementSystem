@@ -1,4 +1,4 @@
-mermaid {
+``` mermaid {
     classDiagram
         class LogisticsManager {
             -List~Vehicle~ _fleet
@@ -37,5 +37,6 @@ mermaid {
         IDeliveryStrategy <|.. InsuranceDecorator 
         LogisticsManager --> Vehicle
         LogisticsManager --> IDeliveryStrategy
-        InsuranceDecorator o-- IDeliveryStrategy 
-    }
+        InsuranceDecorator o-- IDeliveryStrategy
+}
+```
