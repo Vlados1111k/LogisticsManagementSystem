@@ -38,8 +38,4 @@ mermaid {
         LogisticsManager --> Vehicle
         LogisticsManager --> IDeliveryStrategy
         InsuranceDecorator o-- IDeliveryStrategy 
-    
-    
-    
-    
     }
