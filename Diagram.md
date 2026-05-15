@@ -1,4 +1,4 @@
-mermaid{
+mermaid {
     classDiagram
         class LogisticsManager {
             -List~Vehicle~ _fleet
