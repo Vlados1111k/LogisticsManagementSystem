@@ -1,39 +1,54 @@
 classDiagram
     class LogisticsManager {
-        -List~Vehicle~ _fleet
-        -Queue~Cargo~ _warehouse
+        -List_Vehicle_ _fleet
+        -Queue_Cargo_ _warehouse
         +AddToFleet(Vehicle vehicle)
         +AddToWarehouse(Cargo cargo)
         +ProcessDeliveries(IDeliveryStrategy strategy)
     }
+
     class Vehicle {
         <<abstract>>
         +String LicensePlate
         +double Capacity
         +VehicleStatus Status
-        +Drive()
+        +Drive()*
     }
+
     class Truck {
         +Drive()
     }
+
     class Van {
         +Drive()
     }
+
+    class Cargo {
+        +String Name
+        +double Weight
+        +bool IsFragile
+        +bool IsHazardous
+    }
+
     class IDeliveryStrategy {
         <<interface>>
         +Calculate(double distance, Cargo cargo)
     }
+
     class StandardDelivery {
-        +Calculate()
+        +Calculate(double distance, Cargo cargo)
     }
+
     class InsuranceDecorator {
         -IDeliveryStrategy _innerStrategy
-        +Calculate()
+        +Calculate(double distance, Cargo cargo)
     }
-    Vehicle <|-- Truck
-    Vehicle <|-- Van
-    IDeliveryStrategy <|.. StandardDelivery
-    IDeliveryStrategy <|.. InsuranceDecorator
-    LogisticsManager --> Vehicle
-    LogisticsManager --> IDeliveryStrategy
-    InsuranceDecorator o-- IDeliveryStrategy
+
+    Vehicle <|-- Truck : Спадкування
+    Vehicle <|-- Van : Спадкування
+    IDeliveryStrategy <|.. StandardDelivery : Реалізація
+    IDeliveryStrategy <|.. InsuranceDecorator : Реалізація
+    LogisticsManager --> Vehicle : Керує списком
+    LogisticsManager --> Cargo : Має чергу
+    LogisticsManager --> IDeliveryStrategy : Використовує для розрахунку
+    InsuranceDecorator o-- IDeliveryStrategy : Обгортає (Декорує)
